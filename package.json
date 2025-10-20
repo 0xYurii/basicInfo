@@ -1,0 +1,20 @@
+{
+  "name": "odinproject",
+  "version": "1.0.0",
+  "description": "basic info for odin project web site",
+  "homepage": "https://github.com/0xYurii/basicInfo#readme",
+  "bugs": {
+    "url": "https://github.com/0xYurii/basicInfo/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0xYurii/basicInfo.git"
+  },
+  "license": "ISC",
+  "author": "Yurii Bee",
+  "type": "module",
+  "main": "idex.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  }
+}
