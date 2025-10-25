@@ -1,9 +1,11 @@
 // routes/authorRouter.js
 
-const { Router } = require("express");
-const { getAuthorById } = require("../controllers/authorController");
+import { Router } from "express";
+import { getAuthorById } from "../controllers/authorController.js";
 
 const authorRouter = Router();
 
 // ... other route handlers
 authorRouter.get("/:authorId", getAuthorById);
+
+export { authorRouter };
