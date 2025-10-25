@@ -13,6 +13,10 @@ const links = [
   { href: "/", text: "Home" },
   { href: "about", text: "About" },
 ];
+const users = ["Rose", "Cake", "Biff"];
+
+const assetsPath = path.join(__dirname, "public");
+app.use(express.static(assetsPath));
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -22,7 +26,7 @@ app.use(bodyParser.json());
 app.use("/authors", authorRouter);
 
 app.get("/", (req, res) => {
-  res.render("index", { links: links });
+  res.render("index", { links: links, users: users });
 });
 
 app.use((err, req, res, next) => {
