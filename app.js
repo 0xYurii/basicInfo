@@ -1,29 +1,19 @@
-import express from 'express'
-import path from 'path'
-import { fileURLToPath } from 'url'
+import express from "express";
+import bodyParser from "body-parser";
+import { authorRouter } from "./routes/authorRouter.js";
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+const app = express();
+const PORT = 3000;
 
-const app=express()
-const PORT=8000
+app.use(bodyParser.json());
 
-app.get('/',(req,res)=>{
-  res.sendFile(path.join(__dirname, 'index.html'));
-})
+app.use("/authors", authorRouter);
 
-app.get('/about',(req,res)=>{
-  res.sendFile(path.join(__dirname, 'about.html'));
-})
-app.get('/contact-me',(req,res)=>{
-  res.sendFile(path.join(__dirname, 'contact-me.html'));
-})
-app.use((req,res)=>{
-  res.status(404).sendFile(path.join(__dirname, '404.html'));
-}) 
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(err.statusCode || 500).send(err.message);
+});
 
-app.listen(PORT,()=>{
-    console.log(`Server running at http://localhost:${PORT}`)
-}).on('error', (err) => {
-  console.error('Failed to start server:', err)
-})
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
