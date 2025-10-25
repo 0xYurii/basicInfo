@@ -29,6 +29,10 @@ app.get("/", (req, res) => {
   res.render("index", { links: links, users: users });
 });
 
+app.get("/about", (req, res) => {
+  res.render("about", { links: links });
+});
+
 app.use((err, req, res, next) => {
   console.error(err);
   res.status(err.statusCode || 500).send(err.message);
